@@ -24,6 +24,38 @@ class Tree {
 
         return false;
     }
+
+    insert(value) {
+        if (this.#root == null) {
+            this.#root = new Node();
+            this.#root.data = value;
+        }
+        else {
+            let node = this.#root;
+            while (node.data != value) {
+                if (value < node.data) {
+                    if (node.left == null) {
+                        let newNode = new Node();
+                        newNode.data = value;
+                        node.left = newNode;
+                    }
+                    else {
+                        node = node.left;
+                    }
+                }
+                else {
+                    if (node.right == null) {
+                        let newNode = new Node();
+                        newNode.data = value;
+                        node.right = newNode;
+                    }
+                    else {
+                        node = node.right;
+                    }     
+                }
+            }
+        }
+    }
 }
 
 

@@ -6,8 +6,17 @@ let tree = new Tree(array);
 
 prettyPrint(tree.root);
 
-console.log("includes 8: " + tree.includes(8));
-console.log("includes 324: " + tree.includes(324));
-console.log("includes 30: " + tree.includes(30));
+// console.log("includes 8: " + tree.includes(8));
+// console.log("includes 324: " + tree.includes(324));
+// console.log("includes 30: " + tree.includes(30));
+
+tree.insert(200);
+prettyPrint(tree.root);
+
+tree.insert(24);
+prettyPrint(tree.root);
+
+tree.insert(11);
+prettyPrint(tree.root);
 
 
