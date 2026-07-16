@@ -1,11 +1,28 @@
 class Tree {
-    root; 
+    #root; 
     constructor(array) {
-        this.root = buildTree(array);
+        this.#root = buildTree(array);
     }
 
     get root() {
-        return this.root;
+        return this.#root;
+    }
+
+    includes(value) {
+        let node = this.#root;
+        while (node != null) {
+            if (node.data === value) {
+                return true;
+            }
+            else if (value < node.data) {
+                node = node.left;
+            }
+            else {
+                node = node.right;
+            }
+        }
+
+        return false;
     }
 }
 
