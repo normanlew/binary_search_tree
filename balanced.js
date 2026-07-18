@@ -58,6 +58,8 @@ class Tree {
     }
 
     deleteItem(value) {
+        // First, handle all scenaries where the root node's data is equal to the 
+        // value
         let node = this.#root;
         if (node.data == value) {
             if (node.left == null && node.right == null) {
@@ -97,81 +99,86 @@ class Tree {
                 }
             }
         }
-        // else {
-        //     let prior_node = this.#root;
-        //     if (value > node.data) {
-        //         node = node.right;
-        //     }
-        //     else {
-        //         node = node.left;
-        //     }
+        // Next, handle all scenarios where the root's data is not equal to the value
+        else {
+            let prior_node = this.#root;
+            if (value > node.data) {
+                node = node.right;
+            }
+            else {
+                node = node.left;
+            }
 
-        //     while (node != null) {
-        //         if (node.data == value) {
-        //             console.log(node.data + " is equal to " + value);
-        //             if (node.left == null && node.right == null) {
-        //                 if (prior_node.left === node) {
-        //                     prior_node.left = null;
-        //                 }
-        //                 else (prior_node.right = null);
-        //             }
-        //             else if (node.left != null && node.right == null) {
-        //                 if (prior_node.left === node) {
-        //                     prior_node.left = node.left;
-        //                 }
-        //                 else {
-        //                     prior_node.right = node.left;
-        //                 }
-        //             }
-        //             else if (node.left == null && node.right != null) {
-        //                 if (prior_node.right === node) {
-        //                     prior_node.right = node.right;
-        //                 }
-        //                 else {
-        //                     prior_node.left = node.right;
-        //                 }
-        //             }
-        //             else {
-        //                 let node_update = node;
-        //                 let prior_node = node;
-        //                 node = node.right;
+            while (node != null) {
+                if (node.data == value) {
+                    console.log(node.data + " is equal to " + value);
+                    if (node.left == null && node.right == null) {
+                        if (prior_node.left === node) {
+                            prior_node.left = null;
+                        }
+                        else (prior_node.right = null);
+                    }
+                    else if (node.left != null && node.right == null) {
+                        if (prior_node.left === node) {
+                            prior_node.left = node.left;
+                        }
+                        else {
+                            prior_node.right = node.left;
+                        }
+                    }
+                    else if (node.left == null && node.right != null) {
+                        if (prior_node.right === node) {
+                            prior_node.right = node.right;
+                        }
+                        else {
+                            prior_node.left = node.right;
+                        }
+                    }
+                    else {
+                        let node_update = node;
+                        let prior_node = node;
+                        node = node.right;  // might be wrong
+                        console.log('node value is ' + node.data);
 
-        //                 if (node.left == null) {
-        //                     if (node.right == null) {
-        //                         prior_node.right = null;
-        //                     }
-        //                     else {
-        //                         prior_node.right = node.right;
-        //                     }
-        //                 }
-        //                 else {
-        //                     while (node.left != null) {
-        //                         prior_node = node;
-        //                         node = node.left;
-        //                     }
+                        if (node.left == null) {
+                            if (node.right == null) {
+                                node_update.data = node.data
+                                prior_node.right = null;
+                            }
+                            else {
+                                node_update.data = node.data;
+                                prior_node.right = node.right;
+                            }
+                        }
+                        else {
+                            while (node.left != null) {
+                                prior_node = node;
+                                node = node.left;
+                            }
 
-        //                     this.#root.data = node.data;
-        //                     if (node.right == null) {
-        //                         prior_node.left = null;
-        //                     }
-        //                     else {
-        //                         prior_node.left = node.right;
-        //                     }
-        //                 }
-        //             }
-        //             node.data = null;
-        //         }
-        //         else {
-        //             prior_node = node;
-        //             if (value > node.data) {
-        //                 node = node.right;
-        //             }
-        //             else {
-        //                 node = node.left;
-        //             }
-        //         }
-        //     }
-        // }
+                            node_update.data = node.data;
+                            // this.#root.data = node.data;
+                            if (node.right == null) {
+                                prior_node.left = null;
+                            }
+                            else {
+                                prior_node.left = node.right;
+                            }
+                        }
+                    }
+                    // node.data = null;
+                }
+                else {
+                    prior_node = node;
+                    if (value > node.data) {
+                        node = node.right;
+                    }
+                    else {
+                        node = node.left;
+                    }
+                }
+            }
+        }
     }
 }
 
