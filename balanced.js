@@ -182,6 +182,33 @@ class Tree {
             }
         }
     }
+
+    levelOrderForEach(callback) {
+        if (callback === undefined) {
+            throw new Error("A callback function is required");
+        }
+
+        if (this.#root == null) {
+            return;
+        }
+
+        let queue = [];
+
+        queue.push(this.#root);
+
+        while (queue.length !== 0) {
+            let node = queue.shift();
+            callback(node.data);
+            if (node.left != null) {
+                queue.push(node.left);
+            }
+            if (node.right != null) {
+                queue.push(node.right);
+            }
+        }
+        
+        
+    }
 }
 
 

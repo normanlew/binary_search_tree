@@ -19,7 +19,10 @@ prettyPrint(tree.root);
 tree.insert(11);
 prettyPrint(tree.root);
 
-tree.deleteItem(7);
-prettyPrint(tree.root);
+// tree.deleteItem(7);
+// prettyPrint(tree.root);
+
+tree.levelOrderForEach((item) => {console.log(item)});
+tree.levelOrderForEach();
 
 
