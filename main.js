@@ -19,8 +19,7 @@ prettyPrint(tree.root);
 tree.insert(11);
 prettyPrint(tree.root);
 
-tree.deleteItem(67);
+tree.deleteItem(7);
 prettyPrint(tree.root);
-
 
 

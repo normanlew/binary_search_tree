@@ -111,7 +111,7 @@ class Tree {
 
             while (node != null) {
                 if (node.data == value) {
-                    console.log(node.data + " is equal to " + value);
+                    // console.log(node.data + " is equal to " + value);
                     if (node.left == null && node.right == null) {
                         if (prior_node.left === node) {
                             prior_node.left = null;
@@ -166,7 +166,7 @@ class Tree {
                             }
                         }
                     }
-                    // node.data = null;
+                    break;
                 }
                 else {
                     prior_node = node;
@@ -176,6 +176,8 @@ class Tree {
                     else {
                         node = node.left;
                     }
+                    // console.log("prior node value: " + prior_node.data);
+                    // console.log("current node value: " + node.data);
                 }
             }
         }
