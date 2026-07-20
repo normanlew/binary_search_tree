@@ -279,6 +279,41 @@ class Tree {
             }
         }     
     }
+
+    height(value) {
+        let found = false;
+
+        let node = this.#root;
+        while (node != null) {
+            if (node.data === value) {
+                found = true;
+                break;
+            }
+            else {
+                if (value < node.data) {
+                    node = node.left;
+                }
+                else {
+                    node = node.right;
+                }
+            }
+        }
+
+        if (!found) {
+            return undefined;
+        }
+
+        return Math.max(height_helper(node.left), height_helper(node.right));
+
+        function height_helper(node) {
+            if (node != null) {
+                return 1 + Math.max(height_helper(node.left), height_helper(node.right));
+            }
+            else {
+                return 0;
+            }
+        }
+    }
 }
 
 

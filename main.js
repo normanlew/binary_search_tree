@@ -37,7 +37,9 @@ prettyPrint(tree.root);
 
 // tree.preOrderForEach(printData);
 
-tree.postOrderForEach(printData);
+// tree.postOrderForEach(printData);
+
+console.log(tree.height(9));
 
 
 
