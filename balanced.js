@@ -230,8 +230,30 @@ class Tree {
                 helperInOrder(node.right, callback);
             }
         }
+    }
 
+    preOrderForEach(callback) {
+        if (callback === undefined) {
+            throw new Error("A callback function is required");
+        }
 
+        if (this.#root == null) {
+            return;
+        }
+
+        // callback(this.#root.data); // this works
+
+        let node = this.#root;
+
+        helperPreOrder(node, callback);
+
+        function helperPreOrder(node, callback) {
+            if (node != null) {
+                callback(node.data);
+                helperPreOrder(node.left, callback);
+                helperPreOrder(node.right, callback);
+            }
+        }     
     }
 }
 
