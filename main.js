@@ -12,7 +12,7 @@ function printData(data) {
 
 // let array = [7,  23, 8, 9, 7, 9, 67, 6345, 324];
 
-let array = [1, 2, 3, 4];
+let array = [1, 2, 3, 4, 5, 6, 7];
 
 
 
@@ -50,6 +50,11 @@ prettyPrint(tree.root);
 // console.log(tree.height(909));
 // console.log(tree.depth(200));
 console.log("tree is balanced: " + tree.isBalanced());
+tree.rebalance();
+prettyPrint(tree.root);
+console.log("tree is balanced: " + tree.isBalanced());
+
+
 
 
 

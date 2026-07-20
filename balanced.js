@@ -378,6 +378,25 @@ class Tree {
             }
         }
         return true;
+    }
+
+    rebalance() {
+        let array = [];
+
+        let node = this.#root;
+
+        helperInOrder(node, array);
+
+        console.log(array);
+
+        function helperInOrder(node, array) {
+            if (node != null) {
+                helperInOrder(node.left, array);
+                array.push(node.data);
+                helperInOrder(node.right, array);
+            }
+        }
+        this.#root = buildTree(array);
 
     }
 
