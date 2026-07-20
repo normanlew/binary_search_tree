@@ -255,6 +255,30 @@ class Tree {
             }
         }     
     }
+
+    postOrderForEach(callback) {
+        if (callback === undefined) {
+            throw new Error("A callback function is required");
+        }
+
+        if (this.#root == null) {
+            return;
+        }
+
+        // callback(this.#root.data); // this works
+
+        let node = this.#root;
+
+        postOrderForEach(node, callback);
+
+        function postOrderForEach(node, callback) {
+            if (node != null) {
+                postOrderForEach(node.left, callback);
+                postOrderForEach(node.right, callback);
+                callback(node.data);
+            }
+        }     
+    }
 }
 
 

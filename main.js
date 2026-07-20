@@ -35,7 +35,10 @@ prettyPrint(tree.root);
 
 // tree.inOrderForEach(printData);
 
-tree.preOrderForEach(printData);
+// tree.preOrderForEach(printData);
+
+tree.postOrderForEach(printData);
+
 
 
 // tree.inOrderForEach(printData);
