@@ -39,7 +39,8 @@ prettyPrint(tree.root);
 
 // tree.postOrderForEach(printData);
 
-console.log(tree.height(9));
+// console.log(tree.height(909));
+console.log(tree.depth(200));
 
 
 

@@ -314,6 +314,59 @@ class Tree {
             }
         }
     }
+
+    depth(value) {
+        let node = this.#root;
+
+        if (node == null) {
+            return undefined;
+        }
+
+        if (node.data == value) {
+            return 0;
+        }
+        
+        
+        
+        let return_value;;
+
+        if (value < node.data) {
+            return_value = depth_helper(node.left, value);
+        }
+        else {
+            return_value = depth_helper(node.right, value);
+        }
+
+        // console.log("return_value is: " + return_value);
+        // console.log("Number.isNaN(return_value): " + Number.isNaN(return_value));
+
+        if (Number.isNaN(return_value)) {
+            return undefined;
+        }
+        else {
+            return return_value;
+        }
+
+
+
+        function depth_helper(node, value) {
+            if (node == null) {
+                return undefined;
+            }
+            else {
+                // console.log("in depth_helper, node.data is: " + node.data);
+                if (node.data === value) {
+                    // console.log("node.data is equal to value");
+                    return 1;
+                }
+                else {
+                    return 1 + (value < node.data ? depth_helper(node.left, value) : depth_helper(node.right, value));
+                }
+            }
+        
+        }
+
+    }
 }
 
 
@@ -325,7 +378,7 @@ class Node {
 
 function buildTree(array) {
     let sorted = [...new Set(array)].sort((a, b) => a - b);
-    console.log(sorted);
+    // console.log(sorted);
     let node = new Node();
     if (sorted.length === 0) {
         return null;
@@ -337,7 +390,7 @@ function buildTree(array) {
     else {
         
         let mid = Math.trunc(sorted.length / 2);
-        console.log("mid: " + mid);
+        // console.log("mid: " + mid);
         // let node = new Node;
         node.data = sorted[mid];
         node.left = buildTree(sorted.slice(0, mid));
@@ -345,7 +398,7 @@ function buildTree(array) {
 
         // return node;
     }
-    console.log(node.data);
+    // console.log(node.data);
     return node;
 }
 
