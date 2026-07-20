@@ -206,8 +206,32 @@ class Tree {
                 queue.push(node.right);
             }
         }
-        
-        
+    }
+
+    inOrderForEach(callback) {
+        if (callback === undefined) {
+            throw new Error("A callback function is required");
+        }
+
+        if (this.#root == null) {
+            return;
+        }
+
+        // callback(this.#root.data); // this works
+
+        let node = this.#root;
+
+        helperInOrder(node, callback);
+
+        function helperInOrder(node, callback) {
+            if (node != null) {
+                helperInOrder(node.left, callback);
+                callback(node.data);
+                helperInOrder(node.right, callback);
+            }
+        }
+
+
     }
 }
 
@@ -257,4 +281,4 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 
 
-export {Node, Tree, prettyPrint};
+export {Tree, prettyPrint};
