@@ -347,8 +347,6 @@ class Tree {
             return return_value;
         }
 
-
-
         function depth_helper(node, value) {
             if (node == null) {
                 return undefined;
@@ -363,10 +361,27 @@ class Tree {
                     return 1 + (value < node.data ? depth_helper(node.left, value) : depth_helper(node.right, value));
                 }
             }
-        
         }
+    }
+
+    isBalanced() {
+        // if any node is not balanced, return false
+        // else, return true
+        let queue = [];
+
+        queue.push(this.#root);
+
+        while (queue.length !== 0) {
+            let node = queue.shift();
+            if (Math.abs(this.height(node.left.data) - this.height(node.right.data)) > 1) {
+                return false;
+            }
+        }
+        return true;
 
     }
+
+    
 }
 
 

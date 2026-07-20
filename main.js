@@ -6,7 +6,15 @@ function printData(data) {
     console.log(data);
 }
 
-let array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+// let array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+
+// let array = [7, 4, 23, 8, 9, 4, 3, 7, 9, 67, 6345, 324];
+
+// let array = [7,  23, 8, 9, 7, 9, 67, 6345, 324];
+
+let array = [1, 2, 3, 4];
+
+
 
 let tree = new Tree(array);
 
@@ -40,7 +48,8 @@ prettyPrint(tree.root);
 // tree.postOrderForEach(printData);
 
 // console.log(tree.height(909));
-console.log(tree.depth(200));
+// console.log(tree.depth(200));
+console.log("tree is balanced: " + tree.isBalanced());
 
 
 
